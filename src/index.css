@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 15% 5%;
+    --foreground: 220 10% 90%;
+
+    --card: 220 15% 8%;
+    --card-foreground: 220 10% 90%;
+
+    --popover: 220 15% 8%;
+    --popover-foreground: 220 10% 90%;
+
+    --primary: 142 70% 45%;
+    --primary-foreground: 220 15% 5%;
+
+    --secondary: 220 10% 14%;
+    --secondary-foreground: 220 10% 70%;
+
+    --muted: 220 10% 12%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 142 70% 45%;
+    --accent-foreground: 220 15% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 10% 16%;
+    --input: 220 10% 16%;
+    --ring: 142 70% 45%;
+
+    --radius: 0.375rem;
+
+    --glow-green: 142 70% 45%;
+    --slate: 220 10% 30%;
+    --obsidian: 220 15% 5%;
+    --surface-elevated: 220 12% 10%;
+
+    --sidebar-background: 220 15% 5%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 142 70% 45%;
+    --sidebar-primary-foreground: 220 15% 5%;
+    --sidebar-accent: 220 10% 14%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 10% 16%;
+    --sidebar-ring: 142 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer components {
+  .font-heading {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .glow-text {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.4), 0 0 40px hsl(var(--primary) / 0.2);
+  }
+
+  .glow-border {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.1), inset 0 0 15px hsl(var(--primary) / 0.05);
+  }
+
+  .glass-card {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 rounded font-code text-sm font-semibold tracking-wider uppercase transition-all duration-200;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.4);
+    transform: scale(1.02);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.96);
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 rounded font-code text-sm font-semibold tracking-wider uppercase transition-all duration-200;
+    background: transparent;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .btn-outline:hover {
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+
+  .btn-outline:active {
+    transform: scale(0.96);
+  }
+
+  .section-padding {
+    @apply px-6 py-24 md:px-12 lg:px-24;
+  }
+
+  .grid-overlay {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* Custom cursor */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid hsl(142 70% 45%);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease, background 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hovering {
+  transform: scale(1.5);
+  background: hsl(142 70% 45% / 0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(220 15% 5%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(220 10% 20%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(142 70% 45% / 0.5);
+}
